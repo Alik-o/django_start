@@ -1,0 +1,130 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Веб‑разработка на Python",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Автоматизация и скрипты",
+        "description": null
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name": "Мобильные приложения на Python",
+        "description": ""
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Django‑модуль для многоязычных блогов",
+        "description": "Расширяемый модуль для CMS на Django, позволяющий создавать и управлять многоязычными блогами.",
+        "image": "",
+        "category": 1,
+        "price": 79,
+        "created_at": "2026-03-04T15:38:01.510Z",
+        "updated_at": "2026-03-04T16:44:34.014Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Пакет для интеграции Stripe в Django‑проекты",
+        "description": "Полнофункциональный пакет для подключения платёжной системы Stripe к Django‑приложениям.",
+        "image": "",
+        "category": 1,
+        "price": 89,
+        "created_at": "2026-03-04T15:38:23.229Z",
+        "updated_at": "2026-03-04T16:43:33.474Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Бот для мониторинга цен на маркетплейсах (Wildberries, Ozon)",
+        "description": "Автоматизированный скрипт‑бот для отслеживания динамики цен на товары в российских маркетплейсах.",
+        "image": "",
+        "category": 2,
+        "price": 59,
+        "created_at": "2026-03-04T15:40:29.517Z",
+        "updated_at": "2026-03-04T16:46:37.030Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "Шаблон Flask‑приложения с авторизацией через OAuth",
+        "description": "Готовый шаблон веб‑приложения на Flask с интегрированной системой авторизации через популярные OAuth‑провайдеры (Google, GitHub, VK).",
+        "image": "",
+        "category": 1,
+        "price": 49,
+        "created_at": "2026-03-04T16:45:49.716Z",
+        "updated_at": "2026-03-04T16:45:49.716Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Парсер логов сервера с отправкой отчётов в Telegram",
+        "description": "Скрипт для анализа логов веб‑серверов (Nginx, Apache) с автоматической генерацией отчётов.",
+        "image": "",
+        "category": 2,
+        "price": 45,
+        "created_at": "2026-03-04T16:47:35.356Z",
+        "updated_at": "2026-03-04T16:47:35.356Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "Скрипт очистки дубликатов изображений (hashlib, PIL)",
+        "description": "Утилита для поиска и удаления дубликатов графических файлов на диске.",
+        "image": "",
+        "category": 2,
+        "price": 35,
+        "created_at": "2026-03-04T16:48:41.383Z",
+        "updated_at": "2026-03-04T16:48:41.383Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+        "name": "Приложение для учёта тренировок (Kivy + SQLite)",
+        "description": "Кроссплатформенное мобильное приложение для фиксации спортивных нагрузок и прогресса.",
+        "image": "",
+        "category": 3,
+        "price": 69,
+        "created_at": "2026-03-04T16:49:36.863Z",
+        "updated_at": "2026-03-04T16:49:36.863Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+        "name": "Трекер привычек с уведомлениями (BeeWare)",
+        "description": "Нативное мобильное приложение для формирования полезных привычек с умными напоминаниями.",
+        "image": "",
+        "category": 3,
+        "price": 75,
+        "created_at": "2026-03-04T16:50:26.129Z",
+        "updated_at": "2026-03-04T16:50:26.129Z"
+    }
+}
+]
