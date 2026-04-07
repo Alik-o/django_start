@@ -2,7 +2,7 @@
 {% load my_tags %}
 {% block title %}Продукты{% endblock %}
 {% block content %}
-{% for product in products %}
+{% for product in object_list %}
 <div class="row g-2 bg-body-secondary position-relative text-bg-secondary p-0 w-100">
     <div class="col-md-4 mb-md-0 p-md-4">
         <img src="{{ product.image | media_filter }}" class="w-100" style="width: 100px; height: 200px;" alt="Изображение продукта">

@@ -1,29 +1,32 @@
+from PIL.ImageFilter import DETAIL
 from django.http import HttpResponse
-from django.shortcuts import render
 
-from catalog.models import Product
+from django.views.generic import ListView, DetailView, TemplateView
 
-
-def home(request):
-    products = Product.objects.all()
-    context = {'products': products}
-    return render(request, "home.html", context)
+from catalog.models import Product, Category
 
 
-def contacts(request):
-    if request.method == "POST":
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products.html'
+
+    def get_queryset(self):
+        return Product.objects.filter(category_id=self.kwargs['pk'])
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_info.html'
+
+
+class ContactsView(TemplateView):
+    template_name = 'contacts.html'
+
+    def post(self, request):
         name = request.POST.get("name")
         return HttpResponse(f"Здравствуйте, {name}! Ваше сообщение принято!")
-    return render(request, "contacts.html")
-
-
-def products(request, pk):
-    products = Product.objects.filter(category_id=pk)
-    context = {'products': products}
-    return render(request, "products.html", context)
-
-
-def product_info(request, pk):
-    product = Product.objects.get(pk=pk)
-    context = {'product': product}
-    return render(request, "product_info.html", context)
