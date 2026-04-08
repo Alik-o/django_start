@@ -1,4 +1,3 @@
-from PIL.ImageFilter import DETAIL
 from django.http import HttpResponse
 
 from django.views.generic import ListView, DetailView, TemplateView
