@@ -12,19 +12,19 @@
 <body>
 <div class="container">
     <header class="border-bottom lh-1 py-3">
-        {% include 'includes/header_blog.html' %}
+        {% include 'blog/includes/header_blog.html' %}
     </header>
 </div>
 <main class="container">
     <div class="row g-5">
         <div class="col-md-8">
-            <h3 class="pb-4 mb-4 fst-italic border-bottom">Список публикаций</h3>
+
             {% block content %}
             {% endblock %}
         </div>
         <div class="col-md-4">
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
-                {% include 'includes/footer_blog.html' %}
+                {% include 'blog/includes/footer_blog.html' %}
             </footer>
         </div>
     </div>
