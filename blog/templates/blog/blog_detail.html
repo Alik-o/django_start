@@ -1,0 +1,23 @@
+{% extends 'blog/base_blog.html' %}
+{% block title %}Публикация{% endblock %}
+{% block content %}
+<div class="pt-4">
+    <div class="card mb-3">
+        <div class="card-body w-90% row">
+            {% if object.preview %}
+            <img src="{{ object.preview.url }}" class="card-img-top img-fluid img-thumbnail" alt="{{ object.title }}">
+            {% else %}
+            <img src="..." class="card-img-top img-fluid img-thumbnail" alt="Изображение отсутствует">
+            {% endif %}
+
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{object.title}}</h5>
+            <p class="formatted-text" style="white-space: pre-wrap;">{{object.content|linebreaksbr}}</p>
+            <a href="{% url 'blog:blog_update' object.pk %}" class="btn btn-primary p-2">Редактировать</a>
+            <a href="{% url 'blog:blog_delete' object.pk %}" class="btn btn-danger p-2">Удалить</a>
+            <a class="btn btn-secondary" href="{% url 'blog:blog_list' %}">Назад</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

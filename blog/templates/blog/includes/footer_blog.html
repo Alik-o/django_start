@@ -1,0 +1,31 @@
+<div class="position-sticky" style="top: 2rem;">
+    <div class="p-4 mb-3 bg-body-tertiary rounded"><h4 class="fst-italic">Блог</h4>
+        <p class="mb-0">Тема блога: практическое применение Python в реальных проектах — от автоматизации рутинных задач
+            до веб‑разработки и мобильных приложений.</p></div>
+    <div><h4 class="fst-italic">Последние публикации</h4>
+        <ul class="list-unstyled">
+            {% for blog in latest_blogs %}
+            <li>
+                <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                   href="{% url 'blog:blog_detail' blog.pk %}">
+                    {% if blog.preview %}
+                    <img src="{{ blog.preview.url }}"
+                         class="bd-placeholder-img"
+                         height="96"
+                         width="100%"
+                         alt="{{ object.title }}">
+                    {% else %}
+                    <div class="no-image">Изображение отсутствует</div>
+                    {% endif %}
+
+                    <div class="col-lg-8"><h6 class="mb-0">{{blog.title}}</h6>
+                        <small
+                            class="text-body-secondary">{{blog.created_at|date:"d.m.Y"}}
+                        </small>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

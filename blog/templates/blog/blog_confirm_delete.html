@@ -1,0 +1,13 @@
+{% extends 'blog/base_blog.html' %}
+{% block title %}Удаление{% endblock %}
+{% block content %}
+<div class="container mt-2">
+    <h1 class="mb-4">Удаление публикации</h1>
+    <form method="post" enctype="multipart/form-data">
+        <p>Вы уверены, что хотите удалить публикацию "{{object.title}}"?</p>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}

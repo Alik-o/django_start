@@ -7,8 +7,8 @@
         <img src="{{ product.image | media_filter }}" class="w-100" style="width: 100px; height: 200px;" alt="Изображение продукта">
     </div>
     <div class="col-md-8 p-4 ps-md-0">
-        <h5 class="mt-0">{{ product.name }}</h5>
-        <p>{{ product.description }}</p>
+        <h5 class="mt-0">{{ object.name }}</h5>
+        <p>{{ object.description }}</p>
         <a href="{% url 'catalog:products' product.category_id %}" class="stretched-link ">Назад</a>
     </div>
 </div>

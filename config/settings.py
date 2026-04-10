@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "catalog",
+    "blog",
 ]
 
 MIDDLEWARE = [
@@ -45,6 +46,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "catalog.context_processors.categories_processor",
+                "blog.context_processors.latest_blogs",
             ],
         },
     },
