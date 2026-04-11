@@ -1,6 +1,6 @@
-from catalog.models import Category
-
 from django import template
+
+from catalog.models import Category
 
 register = template.Library()
 

@@ -1,8 +1,7 @@
 from django.http import HttpResponse
+from django.views.generic import DetailView, ListView, TemplateView
 
-from django.views.generic import ListView, DetailView, TemplateView
-
-from catalog.models import Product, Category
+from catalog.models import Category, Product
 
 
 class CategoryListView(ListView):

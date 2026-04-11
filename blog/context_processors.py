@@ -1,6 +1,7 @@
-from django.utils import timezone
 from django.core.cache import cache
+
 from .models import Blog
+
 
 def latest_blogs(request):
     cache_key = 'latest_published_blogs_3'
