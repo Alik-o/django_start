@@ -1,16 +1,25 @@
 from itertools import product
 
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
-from catalog.forms import ProductForm
+from catalog.forms import ProductForm, CategoryForm
 from catalog.models import Product, Category
 
 
 class CategoryListView(ListView):
     model = Category
     template_name = 'category_list.html'
+
+
+class CategoryCreateView(CreateView):
+    model = Category
+    template_name = 'category_form.html'
+    form_class = CategoryForm
+    context_object_name = 'category'
+    success_url = '/'
 
 
 class ProductListView(ListView):
@@ -30,14 +39,22 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'product_form.html'
     form_class = ProductForm
-    context_object_name = product
+    context_object_name = 'product'
+    success_url = reverse_lazy('catalog:category_list')
 
 
 class ProductUpdateView(UpdateView):
     model = Product
-    template_name = 'product_form.html'
     form_class = ProductForm
-    context_object_name = product
+    template_name = 'product_form.html'
+    context_object_name = 'product'
+    success_url = reverse_lazy('catalog:category_list')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product_confirm_delete.html'
+    success_url = reverse_lazy('catalog:category_list')
 
 
 class ContactsView(TemplateView):
