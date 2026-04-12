@@ -1,7 +1,10 @@
+from itertools import product
+
 from django.http import HttpResponse
 
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, Category
 
 
@@ -21,6 +24,20 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_info.html'
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'product_form.html'
+    form_class = ProductForm
+    context_object_name = product
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'product_form.html'
+    form_class = ProductForm
+    context_object_name = product
 
 
 class ContactsView(TemplateView):
