@@ -2,6 +2,9 @@
 {% load my_tags %}
 {% block title %}Продукты{% endblock %}
 {% block content %}
+<div class="d-flex flex-row-reverse">
+    <a href="{% url 'catalog:product_form' %}" class="link-primary m-3">Добавить продукт</a>
+</div>
 {% for product in object_list %}
 <div class="row g-2 bg-body-secondary position-relative text-bg-secondary p-0 w-100">
     <div class="col-md-4 mb-md-0 p-md-4">

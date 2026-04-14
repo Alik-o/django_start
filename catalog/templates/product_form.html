@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Создание/редактирование товара{% endblock %}
+{% block content %}
+<div class="container mt-2">
+    <div class="d-flex justify-content-end">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    {% if object %}
+                    <h4 class="my-0 font-weight-normal">Создание нового продукта</h4>
+                    {% else %}
+                    <h4 class="my-0 font-weight-normal">Редактирование продукта</h4>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">
+                            {% if product %}
+                            Сохранить
+                            {% else %}
+                            Создать
+                            {% endif %}
+                        </button>
+                        <a href="{% url 'catalog:category_list' %}" class="btn btn-secondary">Отмена</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
