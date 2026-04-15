@@ -14,7 +14,9 @@
     <div class="col-6 col-md">
         <h5>Дополнительно</h5>
         <ul class="list-unstyled text-small">
+            {% if user.is_authenticated %}
             <li><a class="text-muted" href="/blog">Блог</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="col-6 col-md">

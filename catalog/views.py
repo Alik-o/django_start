@@ -1,4 +1,4 @@
-from itertools import product
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -13,7 +13,7 @@ class CategoryListView(ListView):
     model = Category
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     context_object_name = 'category'
@@ -28,26 +28,26 @@ class ProductListView(ListView):
         return Product.objects.filter(category_id=self.kwargs['pk'])
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/product_info.html'
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     context_object_name = 'product'
     success_url = reverse_lazy('catalog:category_list')
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     context_object_name = 'product'
     success_url = reverse_lazy('catalog:category_list')
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:category_list')
 
