@@ -9,6 +9,7 @@
     </nav>
     <div class="ms-auto">
         {% if user.is_authenticated %}
+        <p>Добро пожаловать, {% if user.name %} {{ user.name }} {% else %} {{ user.email }} {% endif %}</p>
         <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-secondary">Выйти</button>
