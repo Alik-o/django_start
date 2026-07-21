@@ -1,0 +1,33 @@
+{% load my_tags %}
+<div class="row g-2 bg-body-secondary text-bg-secondary mb-3">
+    <div class="col-md-4 p-md-4">
+        <img src="{{ product.image|media_filter }}" class="img-fluid"
+             style="height: 200px; object-fit: cover;" alt="Изображение продукта">
+    </div>
+    <div class="col-md-8 p-4 ps-md-0">
+        <h5 class="mt-0">{{ product.name }}</h5>
+        <p>{{ product.description|truncatechars:100 }}</p>
+        <h3 class="card-title pricing-card-title mb-3">$ {{ product.price }}</h3>
+
+        <a href="{% url 'catalog:product_info' product.pk %}" class="btn btn-primary me-2">Подробнее</a>
+        <a href="#" class="btn btn-primary">Купить</a>
+
+        {% if 'catalog.can_publish_product' in perms %}
+        <div class="row mt-3">
+            <div class="col-6">
+                <p class="card-text p-2 {% if product.publication_status %}text-bg-success{% else %}text-bg-danger{% endif %}">
+                    {% if product.publication_status %}Опубликовано{% else %}Не опубликовано{% endif %}
+                </p>
+            </div>
+            <div class="col-6">
+                <form method="post" action="{% url 'catalog:publish_product' product.pk %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm {% if product.publication_status %}btn-success{% else %}btn-danger{% endif %}">
+                        {% if product.publication_status %}Снять с публикации{% else %}Опубликовать{% endif %}
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

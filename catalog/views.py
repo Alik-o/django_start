@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.views import View
 
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
@@ -23,6 +25,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
 class ProductListView(ListView):
     model = Product
     template_name = 'catalog/products.html'
+    context_object_name = 'products'
 
     def get_queryset(self):
         return Product.objects.filter(category_id=self.kwargs['pk'])
@@ -38,6 +41,10 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     form_class = ProductForm
     context_object_name = 'product'
     success_url = reverse_lazy('catalog:category_list')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
@@ -58,3 +65,11 @@ class ContactsView(TemplateView):
     def post(self, request):
         name = request.POST.get("name")
         return HttpResponse(f"Здравствуйте, {name}! Ваше сообщение принято!")
+
+
+class PublishProductView(View):
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        product.publication_status = not product.publication_status
+        product.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
